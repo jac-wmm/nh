@@ -1,11 +1,14 @@
 const canvas = document.getElementById("canvas");
+const currentLevelDiv = document.getElementById("currentLevel");
 const winnerDiv = document.getElementById("winner");
 const config = document.getElementById("config");
 const startBtn = document.getElementById("btn");
 const giftDiv = document.getElementById("gifts");
-const bgm = document.getElementById("bgm");
 const space = document.getElementById("space");
 const levels = document.getElementById("levels");
+const bgm1 = document.getElementById("bgm1");
+const bgm = document.getElementById("bgm");
+
 
 const ctx = canvas.getContext("2d");
 
@@ -15,79 +18,79 @@ canvas.height = window.innerHeight;
 
 // 员工数据
 const employees = [
-    { name: "梅锐", years: 6 },
-    { name: "王金严", years: 3 },
-    { name: "郝书玉", years: 3 },
-    { name: "李晓芹", years: 2 },
-    { name: "杨妹", years: 2 },
-    { name: "万海凤", years: 1 },
-    { name: "彭雪豪", years: 1 },
-    { name: "赵云凡", years: 1 },
-    { name: "黄丽", years: 0 },
-    { name: "宋梦婷", years: 0 },
-    { name: "王丽", years: 2 },
-    { name: "吴伟昌", years: 3 },
-    { name: "周俊浩", years: 3 },
-    { name: "洪军", years: 3 },
-    { name: "朱家顺", years: 3 },
-    { name: "陆欣雨", years: 0 },
-    { name: "章倩", years: 5 },
-    { name: "徐侠", years: 5 },
-    { name: "吴娟", years: 1 },
-    { name: "钱莲红", years: 1 },
-    { name: "姚瑶", years: 2 },
-    { name: "鲍阳", years: 2 },
-    { name: "王滢珊", years: 2 },
-    { name: "汪慧", years: 1 },
-    { name: "施海燕", years: 1 },
-    { name: "柯娟", years: 1 },
-    { name: "彭旺", years: 5 },
-    { name: "周桂平", years: 5 },
-    { name: "刘含慧", years: 1 },
-    { name: "胡梦", years: 3 },
-    { name: "朱正喜", years: 2 },
-    { name: "陈月", years: 1 },
-    { name: "江艳", years: 9 },
-    { name: "章青", years: 7 },
-    { name: "蒋亚男", years: 6 },
-    { name: "王菲", years: 4 },
-    { name: "徐芮娟", years: 4 },
-    { name: "黄琴", years: 3 },
-    { name: "潘文文", years: 3 },
-    { name: "杨小燕", years: 3 },
-    { name: "徐浩", years: 2 },
-    { name: "胡云霞", years: 1 },
-    { name: "祁琴琴", years: 1 },
-    { name: "刘婷", years: 1 },
-    { name: "王斯慧", years: 1 },
-    { name: "周艳", years: 1 },
-    { name: "邓子涵", years: 1 },
-    { name: "姚丽媛", years: 1 },
-    { name: "王莹", years: 0 },
-    { name: "乔自强", years: 0 },
-    { name: "李娜", years: 0 },
-    { name: "金全棣", years: 0 },
-    { name: "叶佩瑶", years: 0 },
-    { name: "王苗苗", years: 3 },
-    { name: "陈云", years: 2 },
-    { name: "胡玲", years: 8 },
-    { name: "李婧", years: 7 },
-    { name: "尹兰", years: 5 },
-    { name: "芮箕梅", years: 4 },
-    { name: "邢凤", years: 3 },
-    { name: "杨莉", years: 2 },
-    { name: "成晴", years: 2 },
-    { name: "王珏", years: 2 },
-    { name: "何云球", years: 2 },
-    { name: "王娟娟", years: 1 },
-    { name: "王欣", years: 1 },
+    {name: "梅锐", years: 6},
+    {name: "王金严", years: 3},
+    {name: "郝书玉", years: 3},
+    {name: "李晓芹", years: 2},
+    {name: "杨妹", years: 2},
+    {name: "万海凤", years: 1},
+    {name: "彭雪豪", years: 1},
+    {name: "赵云凡", years: 1},
+    {name: "黄丽", years: 0},
+    {name: "宋梦婷", years: 0},
+    {name: "王丽", years: 2},
+    {name: "吴伟昌", years: 3},
+    {name: "周俊浩", years: 3},
+    {name: "洪军", years: 3},
+    {name: "朱家顺", years: 3},
+    {name: "陆欣雨", years: 0},
+    {name: "章倩", years: 5},
+    {name: "徐侠", years: 5},
+    {name: "吴娟", years: 1},
+    {name: "钱莲红", years: 1},
+    {name: "姚瑶", years: 2},
+    {name: "鲍阳", years: 2},
+    {name: "王滢珊", years: 2},
+    {name: "汪慧", years: 1},
+    {name: "施海燕", years: 1},
+    {name: "柯娟", years: 1},
+    {name: "彭旺", years: 5},
+    {name: "周桂平", years: 5},
+    {name: "刘含慧", years: 1},
+    {name: "胡梦", years: 3},
+    {name: "朱正喜", years: 2},
+    {name: "陈月", years: 1},
+    {name: "江艳", years: 9},
+    {name: "章青", years: 7},
+    {name: "蒋亚男", years: 6},
+    {name: "王菲", years: 4},
+    {name: "徐芮娟", years: 4},
+    {name: "黄琴", years: 3},
+    {name: "潘文文", years: 3},
+    {name: "杨小燕", years: 3},
+    {name: "徐浩", years: 2},
+    {name: "胡云霞", years: 1},
+    {name: "祁琴琴", years: 1},
+    {name: "刘婷", years: 1},
+    {name: "王斯慧", years: 1},
+    {name: "周艳", years: 1},
+    {name: "邓子涵", years: 1},
+    {name: "姚丽媛", years: 1},
+    {name: "王莹", years: 0},
+    {name: "乔自强", years: 0},
+    {name: "李娜", years: 0},
+    {name: "金全棣", years: 0},
+    {name: "叶佩瑶", years: 0},
+    {name: "王苗苗", years: 3},
+    {name: "陈云", years: 2},
+    {name: "胡玲", years: 8},
+    {name: "李婧", years: 7},
+    {name: "尹兰", years: 5},
+    {name: "芮箕梅", years: 4},
+    {name: "邢凤", years: 3},
+    {name: "杨莉", years: 2},
+    {name: "成晴", years: 2},
+    {name: "王珏", years: 2},
+    {name: "何云球", years: 2},
+    {name: "王娟娟", years: 1},
+    {name: "王欣", years: 1},
 ];
 // 抽奖规则配置
 const lotteryConfig = {
-    '4': { count: 1, minYears: 0 },
-    '3': { count: 1, minYears: 2 },
-    '2': { count: 1, minYears: 3 },
-    '1': { count: 1, minYears: 5 },
+    '4': {count: 1, minYears: 0, title: '三等奖', content: '华为手表'},
+    '3': {count: 1, minYears: 2, title: '二等奖', content: '平板电脑'},
+    '2': {count: 1, minYears: 3, title: '一等奖', content: '华为手机'},
+    '1': {count: 1, minYears: 5, title: '惊喜奖', content: '幸运躺赢5天假'},
 };
 
 // 动画相关变量
@@ -103,7 +106,7 @@ function initFlyingTexts() {
         x: Math.random() * 800 - 400, // 水平方向随机扩散 (-100 到 100)
         y: Math.random() * 800 - 400, // 垂直方向随机扩散 (-100 到 100)
         z: Math.random() * 200 + 800, // 初始深度（更远的地方）
-        speed: Math.random() * 6 + 4, // 移动速度
+        speed: Math.random() * 6 + 8, // 移动速度
         size: 50,
     }));
 }
@@ -165,11 +168,14 @@ function pickWinner(prizeConfig) {
 // 开始抽奖
 function startLottery() {
     animationRunning = true;
+    currentLevelDiv.style.visibility = "visible";
+    currentLevelDiv.textContent = `${lotteryConfig[currentLevel].title}:${lotteryConfig[currentLevel].content}`;
     canvas.style.visibility = "visible";
     space.style.visibility = "visible";
     winnerDiv.style.visibility = "hidden";
     giftDiv.style.visibility = "hidden";
     config.style.visibility = "hidden";
+    bgm1.pause();
     bgm.play();
 
     initFlyingTexts();
@@ -191,6 +197,7 @@ function stopLottery(prizeConfig) {
     config.style.visibility = "visible";
     startBtn.textContent = '继续抽奖';
     bgm.pause();
+    bgm1.play();
 }
 
 // 事件绑定
@@ -205,9 +212,15 @@ levels.addEventListener('change', () => {
 
 document.addEventListener("keydown", (e) => {
     if (e.code === "Space" && animationRunning) {
-        console.log('222222',lotteryConfig[currentLevel])
         stopLottery(lotteryConfig[currentLevel]); // 更改为对应的奖项
     }
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+    // 用户点击任意位置后播放音频
+    document.addEventListener('click', () => {
+        bgm1.play();
+    }, {once: true}); // 仅绑定一次事件
 });
 
 

@@ -45,20 +45,32 @@
 
         #space {
             position: absolute;
-            bottom: 10%;
+            bottom: 2%;
             left: 50%;
             transform: translate(-50%, -50%);
             font-size: 16px;
-            color: white;
+            color: gray;
             /*text-shadow: 0 0 5px #ff0, 0 0 40px #ff0;*/
             visibility: hidden;
             animation: blink 1s infinite;
         }
-        .company{
+
+        .imgBg {
             position: absolute;
-            bottom: 5%;
+            bottom: 0%;
             left: 50%;
             transform: translate(-50%, -50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .bg {
+            width: 200px;
+        }
+
+        .company {
+
         }
 
         @keyframes blink {
@@ -77,7 +89,17 @@
             right: 0;
             width: 13%;
             height: 8%;
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(14px);
+        }
+
+        #currentLevel{
+            position: absolute;
+            top: 5%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 24px;
+            color: white;
+            text-shadow: 0 0 2px #ff0, 0 0 4px #ff0;
         }
 
         .center {
@@ -92,7 +114,7 @@
             align-items: center;
         }
 
-        #levels{
+        #levels {
             padding: 5px 10px;
             border-radius: 5px;
             border: 1px solid gray;
@@ -144,11 +166,16 @@
 <body>
 <canvas id="canvas"></canvas>
 <video src="video.mp4" autoplay muted loop></video>
+<audio src="bgm1.mp3" id="bgm1" autoplay loop></audio>
 <audio src="bgm.mp3" id="bgm"></audio>
 <div class="blurDiv"></div>
+<span id="currentLevel"></span>
 <div id="winner"></div>
 <div id="space">按空格键停止...</div>
-<img class="company" src="company.png"/>
+<div class="imgBg">
+    <img src="year.png" class="bg"/>
+    <img class="company" src="company.png"/>
+</div>
 <div class="center">
     <div class="giftContainer" id="gifts">
         <h1 class="title">奖品展示</h1>
@@ -167,7 +194,7 @@
             </div>
             <div class="gift">
                 <img class="image" src="4.png"/>
-                <h4>三等奖(智能手表)</h4>
+                <h4>三等奖(华为手表)</h4>
             </div>
         </div>
     </div>
