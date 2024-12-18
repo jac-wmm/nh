@@ -18,6 +18,7 @@ canvas.height = window.innerHeight;
 
 // 员工数据
 const employees = [
+
     {name: "梅锐", years: 6},
     {name: "王金严", years: 3},
     {name: "郝书玉", years: 3},
@@ -73,9 +74,9 @@ const employees = [
     {name: "叶佩瑶", years: 0},
     {name: "王苗苗", years: 3},
     {name: "陈云", years: 2},
+    {name: "尹兰", years: 5},
     {name: "胡玲", years: 8},
     {name: "李婧", years: 7},
-    {name: "尹兰", years: 5},
     {name: "芮箕梅", years: 4},
     {name: "邢凤", years: 3},
     {name: "杨莉", years: 2},
@@ -157,11 +158,14 @@ function drawFrame() {
 // 抽奖逻辑
 function pickWinner(prizeConfig) {
     const eligible = employees.filter((e) => e.years >= prizeConfig.minYears);
+    console.log('eligible', eligible);
     const winners = [];
     while (winners.length < prizeConfig.count && eligible.length > 0) {
         const index = Math.floor(Math.random() * eligible.length);
-        winners.push(eligible.splice(index, 1)[0]);
+        console.log('index', index);
+        winners.push(eligible[index]);
     }
+    console.log('winners', winners);
     return winners;
 }
 
